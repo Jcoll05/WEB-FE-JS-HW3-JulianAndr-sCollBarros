@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Topics Blog</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>JavaScript Async Topics Blog</h1>
+    </header>
+
+    <main>
+        <section id="async">
+            <h2>1. JavaScript Async</h2>
+            <p>Asynchronous JavaScript refers to the ability to perform tasks without blocking the main thread. Functions can be executed after a delay or once a task is completed.</p>
+            <pre><code>
+// Example: Using setTimeout to delay execution
+console.log('Start');
+setTimeout(() => {
+  console.log('Async Task Complete');
+}, 2000);
+console.log('End');
+            </code></pre>
+        </section>
+
+        <section id="callback">
+            <h2>2. Callback</h2>
+            <p>A callback function is passed as an argument to another function and is executed after the completion of that function.</p>
+            <pre><code>
+// Example: Callback function
+function fetchData(callback) {
+  setTimeout(() => {
+    console.log('Data fetched');
+    callback();
+  }, 1000);
+}
+
+function processData() {
+  console.log('Processing data');
+}
+
+fetchData(processData);
+            </code></pre>
+        </section>
+
+        <section id="promise">
+            <h2>3. Promise</h2>
+            <p>A promise represents a value that may be available now, in the future, or never. It has three states: pending, fulfilled, or rejected.</p>
+            <pre><code>
+// Example: Using Promise
+const promise = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve('Task completed');
+  }, 1500);
+});
+
+promise.then(result => console.log(result)).catch(error => console.log(error));
+            </code></pre>
+        </section>
+
+        <section id="async-await">
+            <h2>4. Async/Await</h2>
+            <p>Async functions allow for asynchronous code to be written in a more readable manner using <code>await</code> to pause the function until the Promise is resolved.</p>
+            <pre><code>
+// Example: Async/Await
+async function fetchData() {
+  let data = await new Promise((resolve) => {
+    setTimeout(() => resolve('Data retrieved'), 2000);
+  });
+  console.log(data);
+}
+
+fetchData();
+            </code></pre>
+        </section>
+
+        <section id="event-loop">
+            <h2>5. Event Loop</h2>
+            <p>The event loop allows JavaScript to perform non-blocking I/O operations, even though JavaScript is single-threaded.</p>
+            <pre><code>
+// Example: Understanding Event Loop
+console.log('Start');
+setTimeout(() => {
+  console.log('Inside timeout');
+}, 0);
+console.log('End');
+            </code></pre>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 JavaScript Topics Blog. Julian Coll</p>
+    </footer>
+</body>
+</html>
