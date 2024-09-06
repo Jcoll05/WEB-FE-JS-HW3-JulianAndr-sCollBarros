@@ -14,77 +14,78 @@
     <main>
         <section id="async">
             <h2>1. JavaScript Async</h2>
-            <p>Asynchronous JavaScript refers to the ability to perform tasks without blocking the main thread. Functions can be executed after a delay or once a task is completed.</p>
+            <p>Asynchronous JavaScript allows the execution of code to happen in a non-blocking manner, which means that other operations can continue running while waiting for certain tasks to complete. This is particularly useful for tasks like network requests, file reading, or timers, which can take time to finish. By using asynchronous programming, JavaScript can handle tasks like loading data from a server without freezing the user interface.</p>
             <pre><code>
 // Example: Using setTimeout to delay execution
 console.log('Start');
 setTimeout(() => {
   console.log('Async Task Complete');
-}, 2000);
+}, 2000); // Delays execution by 2 seconds
 console.log('End');
             </code></pre>
         </section>
 
         <section id="callback">
             <h2>2. Callback</h2>
-            <p>A callback function is passed as an argument to another function and is executed after the completion of that function.</p>
+            <p>A callback function is a function passed as an argument to another function, which is then executed inside that function once it completes. This allows for functions to be executed after an asynchronous operation has finished, enabling tasks like handling the result of an API call or processing data. Callbacks are one of the simplest methods for managing asynchronous operations, though they can lead to nested code known as "callback hell" if not managed properly.</p>
             <pre><code>
 // Example: Callback function
 function fetchData(callback) {
   setTimeout(() => {
     console.log('Data fetched');
-    callback();
-  }, 1000);
+    callback(); // Execute the callback after data is fetched
+  }, 1000); // Simulate a delay of 1 second
 }
 
 function processData() {
   console.log('Processing data');
 }
 
-fetchData(processData);
+fetchData(processData); // Pass processData as a callback
             </code></pre>
         </section>
 
         <section id="promise">
             <h2>3. Promise</h2>
-            <p>A promise represents a value that may be available now, in the future, or never. It has three states: pending, fulfilled, or rejected.</p>
+            <p>A promise is an object that represents the eventual completion (or failure) of an asynchronous operation and its resulting value. A promise has three states: <strong>pending</strong> (initial state), <strong>fulfilled</strong> (operation completed successfully), and <strong>rejected</strong> (operation failed). Promises provide a more manageable way to handle asynchronous operations compared to callbacks, and they enable chaining of operations using `.then()` and `.catch()` methods.</p>
             <pre><code>
 // Example: Using Promise
 const promise = new Promise((resolve, reject) => {
   setTimeout(() => {
-    resolve('Task completed');
-  }, 1500);
+    resolve('Task completed'); // Fulfill the promise with a success message
+  }, 1500); // Simulate a delay of 1.5 seconds
 });
 
-promise.then(result => console.log(result)).catch(error => console.log(error));
+promise.then(result => console.log(result)) // Handle success
+       .catch(error => console.log(error)); // Handle error (not used in this case)
             </code></pre>
         </section>
 
         <section id="async-await">
             <h2>4. Async/Await</h2>
-            <p>Async functions allow for asynchronous code to be written in a more readable manner using <code>await</code> to pause the function until the Promise is resolved.</p>
+            <p>Async/Await is a syntactic sugar built on top of promises, designed to make asynchronous code easier to write and read. An <code>async</code> function always returns a promise. Inside an async function, you can use the <code>await</code> keyword to pause the execution of the function until the promise resolves, making the code appear synchronous. This simplifies error handling and reduces the complexity of nested callbacks or promise chains.</p>
             <pre><code>
 // Example: Async/Await
 async function fetchData() {
   let data = await new Promise((resolve) => {
-    setTimeout(() => resolve('Data retrieved'), 2000);
+    setTimeout(() => resolve('Data retrieved'), 2000); // Wait for 2 seconds
   });
-  console.log(data);
+  console.log(data); // Output the data once the promise resolves
 }
 
-fetchData();
+fetchData(); // Call the async function
             </code></pre>
         </section>
 
         <section id="event-loop">
             <h2>5. Event Loop</h2>
-            <p>The event loop allows JavaScript to perform non-blocking I/O operations, even though JavaScript is single-threaded.</p>
+            <p>The event loop is a fundamental part of JavaScript's concurrency model. It allows JavaScript to perform non-blocking I/O operations despite being single-threaded. The event loop continuously checks the call stack and task queue. When the call stack is empty, it processes the next task in the queue, allowing asynchronous tasks like timers or network requests to be handled without freezing the application.</p>
             <pre><code>
 // Example: Understanding Event Loop
 console.log('Start');
 setTimeout(() => {
-  console.log('Inside timeout');
-}, 0);
+  console.log('Inside timeout'); // This will be executed after the stack is clear
+}, 0); // Set timeout with 0 milliseconds delay
 console.log('End');
             </code></pre>
         </section>
@@ -95,3 +96,4 @@ console.log('End');
     </footer>
 </body>
 </html>
+
