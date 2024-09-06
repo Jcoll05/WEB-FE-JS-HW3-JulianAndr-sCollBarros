@@ -16,7 +16,8 @@ This project was created to provide a clear and easy-to-understand explanation o
 
 ## How to View
 
-You can view the deployed page on GitHub Pages here: [JavaScript Topics Blog](https://Jcoll05.github.io/WEB-FE-JS-HW3-JulianAndr-sCollBarros/)
+You can view the deployed page on GitHub Pages here: [JavaScript Topics Blog](https://jcoll05.github.io/web-fe-js-hw3-julian-coll-barros/
+)
 
 ## Author
 
